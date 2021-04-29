@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "476100356122",
+    "project_id": "videon-dd89e",
+    "storage_bucket": "videon-dd89e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476100356122:android:8811bce4492afb4a4ac9a3",
+        "android_client_info": {
+          "package_name": "com.videon.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476100356122-0ln6npc4pr8djcb7tm3t0ck1epnd3v53.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.videon.app",
+            "certificate_hash": "98c36501d76694097dd65c8297b2df70d85be4a1"
+          }
+        },
+        {
+          "client_id": "476100356122-e97u9a23gvs5u4u82isfdl9b49dt56cm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxmkQZh2Pu40UCL_1yLzXCvEhiRJTLP18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476100356122-e97u9a23gvs5u4u82isfdl9b49dt56cm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

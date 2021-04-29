@@ -13,7 +13,7 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 10,//3,
+      seconds: 3,
       navigateAfterSeconds: LoginScreen(),
       title: Text('VideOn',style: logoFont()),
       image: Image.asset('assets/images/logo.png', height: 100, width: 100,),
