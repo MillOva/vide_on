@@ -21,11 +21,19 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  #markdown utility
+  flutter_markdown: ^0.6.1
+  #file system utlity
+  path_provider: ^2.0.1
+  #SplashScreen
   splashscreen: ^1.3.5
+  #FlutterFiere tools
   cloud_firestore: ^0.16.0
   firebase_auth: ^0.20.0+1
   firebase_core: ^0.7.0
   firebase_storage: ^7.0.0
+  #global data access
+  provider: ^4.0.4
   flutter:
     sdk: flutter
 
@@ -45,6 +53,8 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/
+    - assets/text/privacy_policy.md
+    - assets/text/PrivacyPolicy.rtf
   fonts:
     - family: Noteworthy-Lt
       fonts:

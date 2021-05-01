@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/colors.dart';
 import 'package:vide_on/global/custom_widgets/input_field.dart';
 import 'package:vide_on/global/fonts.dart';
 import 'package:vide_on/screens/login_screen/login_screen.dart';
+import 'package:vide_on/screens/privacy_policy_screen/privacy_policy_screen.dart';
 import 'package:vide_on/services/register_email.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -55,23 +57,44 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: EdgeInsets.symmetric(horizontal: 48*coefW),
               child: Row(
                 children: [
-                  Container(
+                  isAgreed ?
+                  GestureDetector(
+                  onTap: ()=> setState((){isAgreed = false;}),
+                  child: Container(
                     height: 24,
                     width: 24,
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
+                      color: sapphire(),
                       borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: calcite()),
+                      border: Border.all(color: sapphire()),
+                    ),
+                    child: Icon(CupertinoIcons.checkmark_alt, color: calcite(),),
+                  ),
+                )
+                      :
+                  GestureDetector(
+                    onTap: ()=> setState((){isAgreed = true;}),
+                    child: Container(
+                      height: 24,
+                      width: 24,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(color: calcite()),
+                      ),
                     ),
                   ),
                   SizedBox(width: 24*coefW),
                   Text("I agree with ", style: bodyFont(),),
-                  Text("Terms&Conditions", style: hyperLinkWhite(),)
+                  GestureDetector(
+                      onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPolicyScreen())),
+                      child: Text("Terms&Conditions", style: hyperLinkWhite(),))
                 ],
               ),
             ),
             SizedBox(height: 34*coefH),
             GestureDetector(
-              onTap: ()=> RegisterWithEmail().register(_name.text, _email.text, _password.text),
+              onTap: ()=> RegisterWithEmail().register(_name.text, _email.text, _password.text, isAgreed, context),
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 8*coefW),
                 alignment: Alignment.center,

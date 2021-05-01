@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 32*coefH),
               GestureDetector(
-                onTap: ()=> LoginWithEmail().login(_email.text, _password.text),
+                onTap: ()=> LoginWithEmail().login(_email.text, _password.text, context),
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 8*coefW),
                   alignment: Alignment.center,
