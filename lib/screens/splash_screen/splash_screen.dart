@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:vide_on/global/colors.dart';
-import 'package:vide_on/global/fonts.dart';
+import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/colors.dart';
+import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/fonts.dart';
 import 'package:vide_on/screens/login_screen/login_screen.dart';
 
 class CustomSplashScreen extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vide_on/global/colors.dart';
+import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/colors.dart';
 import 'package:vide_on/screens/splash_screen/splash_screen.dart';
 
 void main() async {

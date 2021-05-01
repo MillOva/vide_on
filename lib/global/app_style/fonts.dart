@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:vide_on/global/colors.dart';
+import 'package:vide_on/global/app_style/colors.dart';
+
 
   TextStyle logoFont() {
     return
@@ -19,6 +20,22 @@ TextStyle titleFont() {
       fontSize: 44,
       fontFamily: 'Noteworthy-Lt',
     );
+}
+TextStyle title_1Font(){
+    return TextStyle(
+      letterSpacing: 1,
+      color: calcite(),
+      fontSize: 24,
+      fontFamily: 'CircularStdBold',
+    );
+}
+TextStyle title_2Font(){
+  return TextStyle(
+    letterSpacing: 1,
+    color: graphite(),
+    fontSize: 24,
+    fontFamily: 'CircularStdBold',
+  );
 }
 TextStyle headlineFont() {
   return
@@ -46,6 +63,35 @@ TextStyle bodyFont() {
       color: calcite(),
       fontSize: 16,
       fontFamily: 'CircularStdBook',
+    );
+}
+
+TextStyle bodyFont2() {
+  return
+    TextStyle(
+      letterSpacing: 0.67,
+      color: graphite(),
+      fontSize: 16,
+      fontFamily: 'CircularStdBook',
+    );
+}
+
+TextStyle sfProActive() {
+  return
+    TextStyle(
+      letterSpacing: -0.24,
+      color: Color.fromARGB(255, 10, 122, 255),
+      fontSize: 10,
+      //fontFamily: 'Noteworthy-Lt',//SFPRo
+    );
+}
+TextStyle sfProNonActive() {
+  return
+    TextStyle(
+      letterSpacing: -0.24,
+      color: graphite(),
+      fontSize: 10,
+      //fontFamily: 'Noteworthy-Lt',//SFPRo
     );
 }
 

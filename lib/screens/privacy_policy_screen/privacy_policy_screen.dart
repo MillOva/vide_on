@@ -2,11 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:vide_on/global/colors.dart';
+import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/colors.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
-import 'package:vide_on/global/fonts.dart';
+import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/fonts.dart';
 
 class PrivacyPolicyScreen extends StatefulWidget {
   @override
