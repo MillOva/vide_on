@@ -4,6 +4,7 @@ import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/screens/landing_screen/browse_screen.dart';
 import 'package:vide_on/screens/landing_screen/library_screen.dart';
+import 'package:vide_on/screens/landing_screen/profile_screen.dart';
 import 'package:vide_on/screens/video_cards/large_card.dart';
 import 'package:vide_on/screens/video_cards/middle_card.dart';
 import 'package:vide_on/screens/video_cards/small_card.dart';
@@ -107,7 +108,7 @@ class _WatchNowState extends State<WatchNowScreen> {
               ),
             ),
             GestureDetector(
-              //onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> BrowseScreen())),
+              onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen())),
               child: Column(
                 children: [
                   Image.asset('assets/images/profile passive.png'),

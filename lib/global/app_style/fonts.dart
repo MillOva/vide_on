@@ -76,6 +76,16 @@ TextStyle bodyFont2() {
     );
 }
 
+TextStyle bodyFont3() {
+  return
+    TextStyle(
+      letterSpacing: 0.67,
+      color: Color.fromARGB(255, 224, 32, 32),
+      fontSize: 16,
+      fontFamily: 'CircularStdBook',
+    );
+}
+
 TextStyle sfProActive() {
   return
     TextStyle(
