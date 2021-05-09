@@ -4,10 +4,10 @@ import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/screens/landing_screen/browse_screen.dart';
 import 'package:vide_on/screens/landing_screen/library_screen.dart';
-import 'package:vide_on/screens/landing_screen/profile_screen.dart';
+import 'package:vide_on/screens/landing_screen/profile_screen/profile_screen.dart';
+import 'package:vide_on/screens/landing_screen/watch_now_screen/continue_watch.dart';
+import 'package:vide_on/screens/landing_screen/watch_now_screen/recommendations.dart';
 import 'package:vide_on/screens/video_cards/large_card.dart';
-import 'package:vide_on/screens/video_cards/middle_card.dart';
-import 'package:vide_on/screens/video_cards/small_card.dart';
 
 
 class WatchNowScreen extends StatefulWidget {
@@ -39,24 +39,16 @@ class _WatchNowState extends State<WatchNowScreen> {
           Padding(
               padding: EdgeInsets.only(left: 32, top: 32, bottom: 24),
               child: Text("Popular", style: headlineFont(),)),
-          Container(
-            padding: EdgeInsets.only(left: 32),
-            height: 189.3*coefH,
-            child: ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              children: [
-                MiddleCard(), MiddleCard(), MiddleCard(),
-              ],
-            ),
-          ),
+          RecommendationsContainer(height: 189.3*coefH),
+
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 32*coefW, vertical: 16),
               child: Container(height: 1,color: charcoalGrey(),)),
           Padding(
               padding: EdgeInsets.only(left: 32, bottom: 24),
               child: Text("Continue to watch", style: headlineFont(),)),
-          Container(
+          ContinueWatchContainer(height:  98 * coefH),
+        /*  Container(
             padding: EdgeInsets.only(left: 32),
             height: 98 * coefH,
             child: ListView(
@@ -66,7 +58,7 @@ class _WatchNowState extends State<WatchNowScreen> {
                 SmallCard(), SmallCard(), SmallCard(), SmallCard(),
               ],
             ),
-          ),
+          ),*/
 
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 32*coefW, vertical: 24),

@@ -1,7 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/custom_widgets/alert.dart';
-import 'package:vide_on/screens/landing_screen/watch_now_screen.dart';
+import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/screens/landing_screen/watch_now_screen/watch_now_screen.dart';
 import 'package:vide_on/services/user.dart';
 
 class RegisterWithEmail{
@@ -19,9 +20,9 @@ class RegisterWithEmail{
       );
       if(userCredential.user!=null){
         print("${userCredential.user.uid} + name = $name");
-        /*return FirebaseAuth.instance.authStateChanges()
-            .map((User user) => user !=null ? ConcreteUser.fromFirebase(user) :null);*/
-        return Navigator.push(context, MaterialPageRoute(builder: (context)=> WatchNowScreen()));
+        createUserInDB(userCredential.user.uid, name, email, password, context);
+        return FirebaseAuth.instance.authStateChanges()
+            .map((User user) => user !=null ? ConcreteUser.fromFirebase(user) :null);
       }
 
     } on FirebaseAuthException catch (e) {
@@ -44,5 +45,22 @@ class RegisterWithEmail{
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<void> createUserInDB(String id, String name, String email, String password, BuildContext context) async{
+    CollectionReference _users = FirebaseFirestore.instance.collection('users');
+    return _users
+        .doc(id)
+        .set({
+          'name' : name,
+          'email' : email,
+          'password' : password,
+          'profilePicture' : "null",
+        })
+        .then((value) {
+      print("user added");
+      return Navigator.push(context, MaterialPageRoute(builder: (context)=> WatchNowScreen()));
+    })
+        .catchError((error) => print("Failed to add user: $error"));
   }
 }

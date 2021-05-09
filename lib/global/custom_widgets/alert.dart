@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/colors.dart';
-import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/fonts.dart';
+import 'package:vide_on/global/app_style/colors.dart';
+import 'package:vide_on/global/app_style/fonts.dart';
 
 class CustomAlert extends StatefulWidget {
 final String text;

@@ -16,7 +16,7 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
       seconds: 3,
       navigateAfterSeconds: LoginScreen(),
       title: Text('VideOn',style: logoFont()),
-      image: Image.asset('assets/images/logo.png', height: 100, width: 100,),
+      image: Image.asset('assets/images/play.png', height: 100, width: 100,),
       photoSize: 100.0,
 
        backgroundColor: obsidian(),

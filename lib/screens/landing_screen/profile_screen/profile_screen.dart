@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
+import 'package:vide_on/screens/privacy_policy_screen/privacy_policy_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -12,9 +13,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
-    double _width = MediaQuery.of(context).size.width;
     double coefH = _height / 896;
-    double coefW = _width / 414;
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -56,15 +55,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Image.asset('assets/images/next.png')
                 ],),),
                 SizedBox(height: 8*coefH),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8),height: 44*coefH,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: charcoalGrey()),
-                  child: Row(
-                    mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Privacy Policy",style: bodyFont(),),
-                      Image.asset('assets/images/next.png')
-                    ],),),
+                GestureDetector(
+                  onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> PrivacyPolicyScreen())),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8),height: 44*coefH,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: charcoalGrey()),
+                    child: Row(
+                      mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Privacy Policy",style: bodyFont(),),
+                        Image.asset('assets/images/next.png')
+                      ],),),
+                ),
                 SizedBox(height: 8*coefH),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8),height: 44*coefH,

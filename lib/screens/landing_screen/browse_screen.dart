@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/screens/landing_screen/library_screen.dart';
-import 'package:vide_on/screens/landing_screen/profile_screen.dart';
-import 'package:vide_on/screens/landing_screen/watch_now_screen.dart';
-import 'package:vide_on/screens/video_cards/middle_card.dart';
+import 'package:vide_on/screens/landing_screen/profile_screen/profile_screen.dart';
+import 'package:vide_on/screens/landing_screen/watch_now_screen/watch_now_screen.dart';
 import 'package:vide_on/screens/video_cards/source_card.dart';
 
 class BrowseScreen extends StatefulWidget {

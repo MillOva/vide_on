@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/custom_widgets/alert.dart';
-import 'package:vide_on/screens/landing_screen/watch_now_screen.dart';
+import 'package:vide_on/screens/landing_screen/watch_now_screen/watch_now_screen.dart';
 import 'package:vide_on/services/user.dart';
 
 class LoginWithEmail{
@@ -13,8 +13,7 @@ class LoginWithEmail{
       );
       if(userCredential.user != null){
         print(userCredential.user.uid);
-        /*return FirebaseAuth.instance.authStateChanges()
-            .map((User user) => user !=null ? ConcreteUser.fromFirebase(user) :null);*/
+        notifyAboutUser();
         return Navigator.push(context, MaterialPageRoute(builder: (context)=> WatchNowScreen()));
       }
 
@@ -28,4 +27,9 @@ class LoginWithEmail{
       }
     }
   }
+  Stream<ConcreteUser> notifyAboutUser(){
+
+      return FirebaseAuth.instance.authStateChanges()
+          .map((User user) => user !=null ? ConcreteUser.fromFirebase(user) :null);
+}
 }

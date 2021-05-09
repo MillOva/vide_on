@@ -21,9 +21,12 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  #youtube package
+  youtube_api: ^0.8.0
+  youtube_player_flutter: ^8.0.0
   #markdown utility
   flutter_markdown: ^0.6.1
-  #file system utlity
+  #file system utility
   path_provider: ^2.0.1
   #SplashScreen
   splashscreen: ^1.3.5

@@ -9,7 +9,7 @@ class Logo extends StatelessWidget {
     return Container(
       height: this.height,
       width: this.width,
-      child: Image.asset('assets/images/logo.png',fit: BoxFit.fill,),
+      child: Image.asset('assets/images/play.png',fit: BoxFit.fill,),
     );
   }
 }
