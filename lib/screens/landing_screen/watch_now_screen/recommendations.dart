@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:vide_on/screens/video_cards/middle_card.dart';
+import 'package:vide_on/models/video.dart';
+import 'package:vide_on/screens/cards/video_cards/middle_card.dart';
 
 
 class RecommendationsContainer extends StatefulWidget {
@@ -36,9 +37,7 @@ class _RecommendationsContainerState extends State<RecommendationsContainer> {
           scrollDirection: Axis.horizontal,
           itemCount: snapshot.data.docs.length,//ytResult.length,
           itemBuilder:  (context, index) {
-            return MiddleCard(id: snapshot.data.docs[index]['videoID'],
-              source: snapshot.data.docs[index]['source'], title: snapshot.data.docs[index]['title'],
-                author: snapshot.data.docs[index]['author'], thumbnail: snapshot.data.docs[index]['thumbnail'],);
+            return MiddleCard(video: Video.fromMap(snapshot.data.docs[index]));
               //MiddleCard(ytResult: ytResult[index]);
           },
         ),

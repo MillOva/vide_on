@@ -1,12 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/colors.dart';
+import 'package:vide_on/global/app_style/colors.dart';
+import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/global/custom_widgets/input_field.dart';
-import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/fonts.dart';
 import 'package:vide_on/screens/login_screen/register_screen.dart';
-import 'package:vide_on/services/login_email.dart';
+import 'package:vide_on/services/login_services/login_email.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

@@ -21,6 +21,9 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  #twitch package
+  flutter_webview_plugin: ^0.3.11
+  twitch_api: ^0.2.0
   #youtube package
   youtube_api: ^0.8.0
   youtube_player_flutter: ^8.0.0

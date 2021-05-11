@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
-import 'package:vide_on/screens/video_cards/small_card.dart';
-import 'package:vide_on/services/user.dart';
+import 'package:vide_on/models/video.dart';
+import 'package:vide_on/screens/cards/video_cards/small_card.dart';
+import 'package:vide_on/services/user/user.dart';
 
 class ContinueWatchContainer extends StatefulWidget {
   final double height;
@@ -40,7 +41,7 @@ class _ContinueWatchContainerState extends State<ContinueWatchContainer> {
               itemCount: snapshot.data.docs.length,//ytResult.length,
               itemBuilder:  (context, index) {
                 return
-                SmallCard(id: snapshot.data.docs[index]['id'], thumbnail: snapshot.data.docs[index]['thumbnail'],);
+                SmallCard(video: Video.fromMap(snapshot.data.docs[index]),);
                 //MiddleCard(ytResult: ytResult[index]);
               },
             ),

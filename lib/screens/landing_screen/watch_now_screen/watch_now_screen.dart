@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
-import 'package:vide_on/screens/landing_screen/browse_screen.dart';
-import 'package:vide_on/screens/landing_screen/library_screen.dart';
+import 'package:vide_on/screens/cards/video_cards/large_card.dart';
+import 'package:vide_on/screens/landing_screen/browse_screen/browse_screen.dart';
+import 'package:vide_on/screens/landing_screen/library_screen/library_screen.dart';
 import 'package:vide_on/screens/landing_screen/profile_screen/profile_screen.dart';
 import 'package:vide_on/screens/landing_screen/watch_now_screen/continue_watch.dart';
 import 'package:vide_on/screens/landing_screen/watch_now_screen/recommendations.dart';
-import 'package:vide_on/screens/video_cards/large_card.dart';
 
 
 class WatchNowScreen extends StatefulWidget {
@@ -22,6 +22,9 @@ class _WatchNowState extends State<WatchNowScreen> {
     double _width = MediaQuery.of(context).size.width;
     double coefH = _height / 896;
     double coefW = _width / 414;
+
+
+      //final _flutterWebviewPlugin = FlutterWebviewPlugin();
     return Scaffold(
       body: ListView(
         children: [
@@ -39,7 +42,7 @@ class _WatchNowState extends State<WatchNowScreen> {
           Padding(
               padding: EdgeInsets.only(left: 32, top: 32, bottom: 24),
               child: Text("Popular", style: headlineFont(),)),
-          RecommendationsContainer(height: 189.3*coefH),
+          RecommendationsContainer(height: 190*coefH),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 32*coefW, vertical: 16),

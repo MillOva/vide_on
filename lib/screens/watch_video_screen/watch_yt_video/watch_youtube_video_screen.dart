@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vide_on/global/app_style/colors.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class WatchVideoScreen extends StatefulWidget {
@@ -35,7 +34,7 @@ class _WatchVideoScreenState extends State<WatchVideoScreen> {
               Navigator.pop(context);
             },
             child: Container(child: Image.asset('assets/images/back.png'),)),
-        backgroundColor: obsidian(),
+        backgroundColor: Colors.transparent,
       ),
       body: YoutubePlayerBuilder(
         player: YoutubePlayer(
