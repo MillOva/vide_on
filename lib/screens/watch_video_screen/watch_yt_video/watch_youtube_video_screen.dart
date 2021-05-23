@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class WatchVideoScreen extends StatefulWidget {
+class WatchYouTubeVideoScreen extends StatefulWidget {
   final String id;
 
-  WatchVideoScreen({@required this.id});
+  WatchYouTubeVideoScreen({@required this.id});
 
   @override
-  _WatchVideoScreenState createState() => _WatchVideoScreenState();
+  _WatchYouTubeVideoScreenState createState() => _WatchYouTubeVideoScreenState();
 }
 
-class _WatchVideoScreenState extends State<WatchVideoScreen> {
+class _WatchYouTubeVideoScreenState extends State<WatchYouTubeVideoScreen> {
 
 
   @override

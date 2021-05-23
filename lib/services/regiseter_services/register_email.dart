@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/custom_widgets/alert.dart';
-import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/screens/landing_screen/watch_now_screen/watch_now_screen.dart';
-import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/services/user/user.dart';
+import 'package:vide_on/screens/landing_screen/watch_now_screen/watch_now_screen.dart';
+import 'package:vide_on/services/user/user.dart';
 
 class RegisterWithEmail{
   Future<void> register(String name, String email, String password, bool isAgree, BuildContext context) async{

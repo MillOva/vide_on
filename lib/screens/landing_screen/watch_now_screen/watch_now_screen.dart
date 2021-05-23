@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
-import 'package:vide_on/screens/cards/video_cards/large_card.dart';
 import 'package:vide_on/screens/landing_screen/browse_screen/browse_screen.dart';
 import 'package:vide_on/screens/landing_screen/library_screen/library_screen.dart';
 import 'package:vide_on/screens/landing_screen/profile_screen/profile_screen.dart';
 import 'package:vide_on/screens/landing_screen/watch_now_screen/continue_watch.dart';
+import 'package:vide_on/screens/landing_screen/watch_now_screen/feed.dart';
 import 'package:vide_on/screens/landing_screen/watch_now_screen/recommendations.dart';
 
 
@@ -51,23 +51,11 @@ class _WatchNowState extends State<WatchNowScreen> {
               padding: EdgeInsets.only(left: 32, bottom: 24),
               child: Text("Continue to watch", style: headlineFont(),)),
           ContinueWatchContainer(height:  98 * coefH),
-        /*  Container(
-            padding: EdgeInsets.only(left: 32),
-            height: 98 * coefH,
-            child: ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              children: [
-                SmallCard(), SmallCard(), SmallCard(), SmallCard(),
-              ],
-            ),
-          ),*/
 
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 32*coefW, vertical: 24),
               child: Container(height: 1,color: charcoalGrey(),)),
-          Align(child: LargeCard()),
-
+          FeedContainer(height: 500),
         ],
       ),
       bottomNavigationBar: Container(height: 82* coefH, width:  _width, color: charcoalGrey(),
