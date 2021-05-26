@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:vide_on/models/video.dart';
 import 'package:vide_on/screens/cards/video_cards/large_card.dart';
 import 'package:vide_on/services/keys/keys.dart';
-import 'package:vide_on/services/user/user.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:vide_on/services/video_actions/parse_tw_video.dart';
@@ -25,6 +23,7 @@ class _FeedContainerState extends State<FeedContainer> {
     var data = await http.get(
         "https://youtube.googleapis.com/youtube/v3/videos?chart=mostPopular&key=$ApiKey&part=snippet");
     var jsonData = json.decode(data.body);
+    print(jsonData);
     for (var u in jsonData['items']) {
       Item item = Item.fromJson(u);
       _videos.add(Video.fromYT(item));
@@ -75,7 +74,6 @@ class _FeedContainerState extends State<FeedContainer> {
 
   @override
   Widget build(BuildContext context) {
-    final ConcreteUser _user = Provider.of<ConcreteUser>(context);
     return FutureBuilder(
         future: _dataModel,
         builder: (context, snapshot) {

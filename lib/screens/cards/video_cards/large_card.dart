@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/models/video.dart';
+import 'package:vide_on/screens/watch_video_screen/watch_tw_video/watch_twitch_video.dart';
+import 'package:vide_on/screens/watch_video_screen/watch_vm_video/watch_vimeo_video.dart';
+import 'package:vide_on/screens/watch_video_screen/watch_yt_video/watch_youtube_video_screen.dart';
+import 'package:vide_on/services/user/user.dart';
+import 'package:vide_on/services/video_actions/video_actions.dart';
 
 class LargeCard extends StatefulWidget {
   final Video video;
@@ -13,12 +19,25 @@ class LargeCard extends StatefulWidget {
 class _LargeCardState extends State<LargeCard> {
   @override
   Widget build(BuildContext context) {
+    final ConcreteUser _user = Provider.of<ConcreteUser>(context);
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
     double coefH = _height / 896;
     double coefW = _width / 414;
     return GestureDetector(
-     // onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> WatchTwitchVideoScreen(id: "1027680776"))),
+      onTap: ()
+    {
+      if(widget.video.source == "YouTube")
+        //print(widget.video.id);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => WatchYouTubeVideoScreen(id: widget.video.id)));
+      if(widget.video.source == "Twitch")
+        //print(widget.video.id);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => WatchTwitchVideoScreen(id: widget.video.id)));
+      if(widget.video.source == "Vimeo")
+        //print(widget.video.id);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => WatchVimeoVideoScreen(id: widget.video.id)));
+      addToWatched(widget.video, _user);
+      },
       child: Container(
         width:  350 * coefW,
         child: Column(

@@ -41,7 +41,7 @@ class _WatchNowState extends State<WatchNowScreen> {
           ),
           Padding(
               padding: EdgeInsets.only(left: 32, top: 32, bottom: 24),
-              child: Text("Popular", style: headlineFont(),)),
+              child: Text("Recommendations", style: headlineFont(),)),
           RecommendationsContainer(height: 190*coefH),
 
           Padding(
@@ -65,7 +65,8 @@ class _WatchNowState extends State<WatchNowScreen> {
           children: [
             Column(
               children: [
-                Image.asset('assets/images/watch.png'),
+                Icon(CupertinoIcons.play_fill, color: sapphire(),),
+                //Image.asset('assets/images/watch.png'),
                 SizedBox(height: 7),
                 Text("Watch",style: sfProActive(),)
               ],
@@ -74,7 +75,8 @@ class _WatchNowState extends State<WatchNowScreen> {
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> BrowseScreen())),
               child: Column(
                 children: [
-                  Image.asset('assets/images/browse passive.png'),
+                  Icon(CupertinoIcons.compass_fill, color: graphite(),),
+                  //Image.asset('assets/images/browse passive.png'),
                   SizedBox(height: 7),
                   Text("Browse",style: sfProNonActive(),)
                 ],
@@ -84,7 +86,8 @@ class _WatchNowState extends State<WatchNowScreen> {
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> LibraryScreen())),
               child: Column(
                 children: [
-                  Image.asset('assets/images/library passive.png'),
+                  Icon(CupertinoIcons.bookmark_fill, color: graphite(),),
+                  //Image.asset('assets/images/library passive.png'),
                   SizedBox(height: 7),
                   Text("Library",style: sfProNonActive(),)
                 ],
@@ -94,7 +97,8 @@ class _WatchNowState extends State<WatchNowScreen> {
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen())),
               child: Column(
                 children: [
-                  Image.asset('assets/images/profile passive.png'),
+                  Icon(Icons.person, size: 25, color: graphite(),),
+                  //Image.asset('assets/images/profile passive.png'),
                   SizedBox(height: 7),
                   Text("Profile",style: sfProNonActive(),)
                 ],

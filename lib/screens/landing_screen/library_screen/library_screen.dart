@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
@@ -61,7 +62,8 @@ class _LibraryScreenState extends State<LibraryScreen> {
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> WatchNowScreen())),
               child: Column(
                 children: [
-                  Image.asset('assets/images/watch passive.png'),
+                  Icon(CupertinoIcons.play_fill, color: graphite(),),
+                  //Image.asset('assets/images/watch passive.png'),
                   SizedBox(height: 7),
                   Text("Watch",style: sfProNonActive(),)
                 ],
@@ -71,7 +73,8 @@ class _LibraryScreenState extends State<LibraryScreen> {
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> BrowseScreen())),
               child: Column(
                 children: [
-                  Image.asset('assets/images/browse passive.png'),
+                  Icon(CupertinoIcons.compass_fill, color: graphite(),),
+                  //Image.asset('assets/images/browse passive.png'),
                   SizedBox(height: 7),
                   Text("Browse",style: sfProNonActive(),)
                 ],
@@ -79,7 +82,8 @@ class _LibraryScreenState extends State<LibraryScreen> {
             ),
             Column(
               children: [
-                Image.asset('assets/images/library.png'),
+                //Image.asset('assets/images/library.png'),
+                Icon(CupertinoIcons.bookmark_fill, color: sapphire(),),
                 SizedBox(height: 7),
                 Text("Library",style: sfProActive(),)
               ],
@@ -88,7 +92,8 @@ class _LibraryScreenState extends State<LibraryScreen> {
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen())),
               child: Column(
                 children: [
-                  Image.asset('assets/images/profile passive.png'),
+                  Icon(Icons.person, size: 25, color: graphite(),),
+                  //Image.asset('assets/images/profile passive.png'),
                   SizedBox(height: 7),
                   Text("Profile",style: sfProNonActive(),)
                 ],

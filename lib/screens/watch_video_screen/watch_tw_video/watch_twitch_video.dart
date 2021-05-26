@@ -27,7 +27,7 @@ class _WatchTwitchVideoScreenState extends State<WatchTwitchVideoScreen> {
     child: Container(child: Image.asset('assets/images/back.png'),)),
     backgroundColor: Colors.transparent,
     ),
-        url: 'https://www.twitch.tv/videos/${widget.id}');
+        url: 'https://www.twitch.tv/${widget.id}');
   }
 }
   /*
