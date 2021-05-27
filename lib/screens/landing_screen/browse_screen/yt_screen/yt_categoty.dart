@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/models/video.dart';
 import 'package:http/http.dart' as http;
 import 'package:vide_on/screens/cards/video_cards/large_card.dart';
+import 'package:vide_on/screens/landing_screen/browse_screen/yt_screen/yt_search.dart';
 import 'package:vide_on/services/keys/keys.dart';
 import 'package:vide_on/services/video_actions/parse_yt_category.dart';
 
@@ -69,10 +69,6 @@ class _YTCategoryState extends State<YTCategory> {
       appBar: AppBar(
         leading: GestureDetector(
             onTap: () {
-              SystemChrome.setPreferredOrientations([
-                DeviceOrientation.portraitUp,
-                DeviceOrientation.portraitDown,
-              ]);
               Navigator.pop(context);
             },
             child: Container(
@@ -89,7 +85,7 @@ class _YTCategoryState extends State<YTCategory> {
                 Icons.search_rounded,
                 color: calcite(),
               ),
-              onPressed: null)
+              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> YouTubeSearch())))
         ],
       ),
       body: FutureBuilder(

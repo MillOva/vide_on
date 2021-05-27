@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class WatchTwitchVideoScreen extends StatefulWidget {
   WatchTwitchVideoScreen({Key key, this.id}) : super(key: key);
@@ -13,7 +14,28 @@ class WatchTwitchVideoScreen extends StatefulWidget {
 
 class _WatchTwitchVideoScreenState extends State<WatchTwitchVideoScreen> {
   @override
- Widget build(BuildContext context) {
+ Widget build(BuildContext context){
+    return Scaffold(appBar: AppBar(
+      leading: GestureDetector(
+          onTap: () {
+            SystemChrome.setPreferredOrientations([
+              DeviceOrientation.portraitUp,
+              DeviceOrientation.portraitDown,
+            ]);
+            Navigator.pop(context);
+          },
+          child: Container(child: Image.asset('assets/images/back.png'),)),
+      backgroundColor: Colors.transparent,
+    ),
+      body: Container(
+          child: WebView(
+            initialUrl: Uri.dataFromString('<html><body><iframe src="https://player.twitch.tv/?autoplay=false&parent=streamernews.example.com&video=v40464143"></iframe></body></html>', mimeType: 'text/html').toString(),
+            javascriptMode: JavascriptMode.unrestricted,
+          )
+      ),
+    );
+  }
+  /*{
     return WebviewScaffold(
         appBar: AppBar(
         leading: GestureDetector(
@@ -27,8 +49,9 @@ class _WatchTwitchVideoScreenState extends State<WatchTwitchVideoScreen> {
     child: Container(child: Image.asset('assets/images/back.png'),)),
     backgroundColor: Colors.transparent,
     ),
-        url: 'https://www.twitch.tv/${widget.id}');
-  }
+        url: 'https://www.twitch.tv/${widget.id}',);
+
+  }*/
 }
   /*
   final _twitchClient =

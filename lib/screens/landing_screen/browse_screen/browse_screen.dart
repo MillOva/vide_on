@@ -52,13 +52,18 @@ class _BrowseScreenState extends State<BrowseScreen> {
           children: [
             GestureDetector(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> WatchNowScreen())),
-              child: Column(
-                children: [
-                  Icon(CupertinoIcons.play_fill, color: graphite(),),
-                  //Image.asset('assets/images/watch passive.png'),
-                  SizedBox(height: 7),
-                  Text("Watch",style: sfProNonActive(),)
-                ],
+              child: Container(
+                //height: 44,
+                width: 44,
+                color: charcoalGrey(),
+                child: Column(
+                  children: [
+                    Icon(CupertinoIcons.play_fill, color: graphite(),),
+                    //Image.asset('assets/images/watch passive.png'),
+                    SizedBox(height: 7),
+                    Text("Watch",style: sfProNonActive(),)
+                  ],
+                ),
               ),
             ),
             Column(
