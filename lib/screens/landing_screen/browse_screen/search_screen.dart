@@ -1,38 +1,21 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
-import 'package:http/http.dart' as http;
-import 'package:vide_on/services/keys/keys.dart';
+import 'package:vide_on/screens/landing_screen/browse_screen/tw_screen/tw_search_result.dart';
+import 'package:vide_on/screens/landing_screen/browse_screen/vm_screen/vm_search_result.dart';
+import 'package:vide_on/screens/landing_screen/browse_screen/yt_screen/yt_search_result.dart';
 
-class YouTubeSearch extends StatefulWidget {
+class SearchScreen extends StatefulWidget {
+  final String source;
+  SearchScreen({@required this.source});
   @override
-  _YouTubeSearchState createState() => _YouTubeSearchState();
+  _SearchScreenState createState() => _SearchScreenState();
 }
 
-class _YouTubeSearchState extends State<YouTubeSearch> {
+class _SearchScreenState extends State<SearchScreen> {
   TextEditingController _textController = TextEditingController();
-  Future<List<String>> _dataModel;
   List<String> _videos = [];
-
-  Future<List<String>> getYTSearch(String q) async {
-    _videos.clear();
-    var data = await http.get(
-        "https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=$ApiKey&q=$q");
-    var jsonData = json.decode(data.body);
-    for (var u in jsonData['items']) {
-      print(u);
-      _videos.add(u['snippet']['title']);
-      setState(() {
-
-      });
-    }
-    print(_videos.length);
-    return _videos;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,17 +39,26 @@ class _YouTubeSearchState extends State<YouTubeSearch> {
               onPressed: () {
                 setState(() {
                   _textController.clear();
-                  _videos.clear();
+                  //_videos.clear();
                 });
               })
         ],
       ),
       body: Container(
         child: ListView.separated(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: ()=> print("go to video page"),
+                onTap: (){
+                  switch(widget.source){
+                    case "YouTube": Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                        YouTubeSearchResult(title: "YouTube", q: _textController.text))); break;
+                    case "Twitch": Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                        TwitchSearchResult(title: "Twitch", q: _textController.text))); break;
+                    case "Vimeo": Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                        VimeoSearchResult(title: "Vimeo", q: _textController.text))); break;
+                  }
+                },
                 child: Container(
                   height: 64,
                   color: obsidian(),
@@ -83,9 +75,9 @@ class _YouTubeSearchState extends State<YouTubeSearch> {
                               overflow: TextOverflow.ellipsis, ),
                           ],),
                         ),
-                    IconButton(icon: Icon(CupertinoIcons.arrow_up_left, color: graphite(),), color: calcite(),
-                        onPressed: ()=> setState((){_textController.text = _videos[index];})),
-                  ]),),
+                        IconButton(icon: Icon(CupertinoIcons.arrow_up_left, color: graphite(),), color: calcite(),
+                            onPressed: ()=> setState((){_textController.text = _videos[index];})),
+                      ]),),
               );
             },
             separatorBuilder: (BuildContext context, int index) => Divider(
@@ -104,7 +96,7 @@ class _YouTubeSearchState extends State<YouTubeSearch> {
         obscureText: false,
         keyboardType: TextInputType.text,
         style: bodyFont(),
-        onChanged: (string)=> string =="" ? setState((){_videos.clear();}) :_dataModel = getYTSearch(string),
+        onChanged: (string)=> string =="" ? setState((){_videos.clear();}) : setState((){_videos.add(string);}),
 
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(12),

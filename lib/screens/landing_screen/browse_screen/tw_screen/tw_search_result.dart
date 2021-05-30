@@ -1,40 +1,37 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/models/video.dart';
-import 'package:http/http.dart' as http;
-import 'package:vide_on/screens/cards/video_cards/large_card.dart';
-import 'package:vide_on/screens/landing_screen/browse_screen/search_screen.dart';
+import 'package:vide_on/screens/cards/video_cards/video_with_desc_card.dart';
 import 'package:vide_on/services/keys/keys.dart';
+import 'package:http/http.dart' as http;
 import 'package:vide_on/services/video_actions/parse_tw_video.dart';
 
-class TWCategory extends StatefulWidget {
+class TwitchSearchResult extends StatefulWidget {
   final String title;
-  final String id;
-  TWCategory({@required this.title, @required this.id});
+  final String q;
+  TwitchSearchResult({@required this.title, @required this.q});
   @override
-  _TWCategoryState createState() => _TWCategoryState();
+  _TwitchSearchResultState createState() => _TwitchSearchResultState();
 }
 
-class _TWCategoryState extends State<TWCategory> {
+class _TwitchSearchResultState extends State<TwitchSearchResult> {
   Future<List<Video>> _dataModel;
   List<Video> _videos = [];
   ScrollController _scrollController = ScrollController();
   int _nextPageToken = 0;
 
-  Future<List<Video>> getTWVideos(int offset) async {
+  Future<List<Video>> getTWVideos(int token) async {
     Map<String, String> headers = {
       'Accept': 'application/vnd.twitchtv.v5+json',
       'Client-ID': clientId,
     };
     var data = await http.get(
-        "https://api.twitch.tv/kraken/streams/?game=${widget.id}&limit=5&offset=$offset", headers: headers);
-    print("token = $offset");
+        "https://api.twitch.tv/kraken/search/streams?query=${widget.q}&limit=10&offset=$token", headers: headers);
+
     var jsonData = json.decode(data.body);
     for (var u in jsonData['streams']) {
-      //print(u);
       Stream stream = Stream.fromJson(u);
       _videos.add(Video.fromTW(stream));
     }
@@ -62,7 +59,7 @@ class _TWCategoryState extends State<TWCategory> {
         !_scrollController.position.outOfRange) {
       setState(() {
         print("bottom");
-        _nextPageToken = _nextPageToken + 5;
+        _nextPageToken = _nextPageToken + 10;
         _dataModel = getTWVideos(_nextPageToken);
       });
     }
@@ -81,36 +78,29 @@ class _TWCategoryState extends State<TWCategory> {
             )),
         backgroundColor: Colors.transparent,
         title: Text(
-          widget.title,
+          "${widget.title} search results",
           style: headlineFont(),
         ),
-        actions: [
-          IconButton(
-              icon: Icon(
-                Icons.search_rounded,
-                color: calcite(),
-              ),
-              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen(source: "Twitch"))))
-        ],
       ),
-      body: FutureBuilder(
-          future: _dataModel,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Container(
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                //height: 500,
-                child: ListView.builder(
-                    controller: _scrollController,
-                    shrinkWrap: true,
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      return LargeCard(video: snapshot.data[index]);
-                    }),
-              );
-            } else
-              return Center(child: CircularProgressIndicator());
-          }),
+      body: Container(
+        child: FutureBuilder(
+            future: _dataModel,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Container(
+                  alignment: Alignment.topLeft,
+                  child: ListView.builder(
+                      controller: _scrollController,
+                      shrinkWrap: true,
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return VideoWithDescriptionCard(video: snapshot.data[index]);
+                      }),
+                );
+              } else
+                return Center(child: CircularProgressIndicator());
+            }),
+      ),
     );
   }
 }

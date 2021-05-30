@@ -5,6 +5,7 @@ import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/models/video.dart';
 import 'package:vide_on/screens/cards/video_cards/large_card.dart';
+import 'package:vide_on/screens/landing_screen/browse_screen/search_screen.dart';
 import 'package:vide_on/screens/landing_screen/browse_screen/vm_screen/vm_category.dart';
 import 'package:vide_on/services/keys/keys.dart';
 import 'package:vide_on/services/video_actions/parse_vm_video.dart';
@@ -84,7 +85,7 @@ class _VimeoScreenState extends State<VimeoScreen> {
                 Icons.search_rounded,
                 color: calcite(),
               ),
-          ),//onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> YouTubeSearch())))
+          onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen(source: "Vimeo"))))
         ],
       ),
       body: ListView(//Column

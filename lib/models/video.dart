@@ -1,8 +1,10 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vide_on/services/video_actions/parse_tw_video.dart';
+import 'package:vide_on/services/video_actions/parse_tw_search_video.dart' as twSearch;
 import 'package:vide_on/services/video_actions/parse_vm_video.dart';
 import 'package:vide_on/services/video_actions/parse_yt_category.dart' as category;
+import 'package:vide_on/services/video_actions/parse_yt_search_video.dart' as ytSearch;
 import 'package:vide_on/services/video_actions/parse_yt_video.dart';
 
 class Video {
@@ -48,6 +50,15 @@ class Video {
       source: "YouTube",
     );
   }
+  factory Video.fromYTSearch(ytSearch.Item video) {
+    return Video(
+      id: video.id.videoId,
+      title: video.snippet.title,
+      thumbnailUrl: video.snippet.thumbnails.high.url,
+      channelTitle: video.snippet.channelTitle,
+      source: "YouTube",
+    );
+  }
 
   factory Video.fromTW(Stream stream) {
     return Video(
@@ -55,6 +66,15 @@ class Video {
       title: stream.channel.status,
       thumbnailUrl: stream.preview.large,
       channelTitle: stream.channel.name,
+      source: "Twitch",
+    );
+  }
+  factory Video.fromTWSearch(twSearch.Channel stream) {
+    return Video(
+      id: stream.id.toString(),
+      title: stream.status,
+      thumbnailUrl: stream.videoBanner,
+      channelTitle: stream.name,
       source: "Twitch",
     );
   }
@@ -68,4 +88,5 @@ class Video {
       source: "Vimeo",
     );
   }
+
 }

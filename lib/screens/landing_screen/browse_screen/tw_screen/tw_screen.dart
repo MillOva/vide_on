@@ -5,6 +5,7 @@ import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/models/video.dart';
 import 'package:vide_on/screens/cards/video_cards/large_card.dart';
+import 'package:vide_on/screens/landing_screen/browse_screen/search_screen.dart';
 import 'package:vide_on/screens/landing_screen/browse_screen/tw_screen/tw_category.dart';
 import 'package:vide_on/services/keys/keys.dart';
 import 'package:http/http.dart' as http;
@@ -86,7 +87,7 @@ class _TwitchScreenState extends State<TwitchScreen> {
                 Icons.search_rounded,
                 color: calcite(),
               ),
-              onPressed: null//()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> YouTubeSearch()))
+              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen(source: "Twitch")))
           )
         ],
       ),

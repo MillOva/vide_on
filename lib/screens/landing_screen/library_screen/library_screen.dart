@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
+import 'package:vide_on/models/video.dart';
 import 'package:vide_on/screens/cards/video_cards/video_with_desc_card.dart';
 import 'package:vide_on/screens/landing_screen/browse_screen/browse_screen.dart';
 import 'package:vide_on/screens/landing_screen/profile_screen/profile_screen.dart';
@@ -49,8 +50,8 @@ class _LibraryScreenState extends State<LibraryScreen> {
               ],
             ),
           ),
-         VideoWithDescriptionCard(),
-          VideoWithDescriptionCard(),
+         VideoWithDescriptionCard(video: Video(id: "2zhi3FmTUFg", title: "SLAYER - You Against You (OFFICIAL MUSIC VIDEO)", thumbnailUrl:"https://img.youtube.com/vi/2zhi3FmTUFg/0.jpg", channelTitle: "Slayer",source: "YouTube")),
+          VideoWithDescriptionCard(video: Video(id: "2zhi3FmTUFg", title: "SLAYER - You Against You (OFFICIAL MUSIC VIDEO)", thumbnailUrl:"https://img.youtube.com/vi/2zhi3FmTUFg/0.jpg", channelTitle: "Slayer",source: "YouTube")),
         ],
       ),
       bottomNavigationBar: Container(height: 82* coefH, width:  _width, color: charcoalGrey(),

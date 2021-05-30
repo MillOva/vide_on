@@ -1,23 +1,23 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/models/video.dart';
-import 'package:http/http.dart' as http;
-import 'package:vide_on/screens/cards/video_cards/large_card.dart';
-import 'package:vide_on/screens/landing_screen/browse_screen/search_screen.dart';
+import 'package:vide_on/screens/cards/video_cards/video_with_desc_card.dart';
 import 'package:vide_on/services/keys/keys.dart';
+import 'package:http/http.dart' as http;
 import 'package:vide_on/services/video_actions/parse_vm_video.dart';
 
-class VMCategory extends StatefulWidget {
+class VimeoSearchResult extends StatefulWidget {
   final String title;
-  final String id;
-  VMCategory({@required this.title, @required this.id});
+  final String q;
+  VimeoSearchResult({@required this.title, @required this.q});
   @override
-  _VMCategoryState createState() => _VMCategoryState();
+  _VimeoSearchResultState createState() => _VimeoSearchResultState();
 }
 
-class _VMCategoryState extends State<VMCategory> {
+class _VimeoSearchResultState extends State<VimeoSearchResult> {
+
   Future<List<Video>> _dataModel;
   List<Video> _videos = [];
   ScrollController _scrollController = ScrollController();
@@ -28,11 +28,12 @@ class _VMCategoryState extends State<VMCategory> {
       'Authorization': 'bearer $access_token',
     };
     var data = await http.get(
-        "https://api.vimeo.com/categories/${widget.id}/videos?per_page=5&paging=$paging", headers: headers);
+        "https://api.vimeo.com/videos?per_page=10&query=${widget.q}&paging=$paging", headers: headers);
     var jsonData = json.decode(data.body);
     VimeoVideo video = VimeoVideo.fromJson(jsonData);
     _nextPageToken = video.paging.next;
     for(var u in jsonData['data']) {
+      print(u);
       Datum datum = Datum.fromJson(u);
       _videos.add(Video.fromVM(datum));
     }
@@ -64,7 +65,6 @@ class _VMCategoryState extends State<VMCategory> {
       });
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,36 +78,29 @@ class _VMCategoryState extends State<VMCategory> {
             )),
         backgroundColor: Colors.transparent,
         title: Text(
-          widget.title,
+          "${widget.title} search results",
           style: headlineFont(),
         ),
-        actions: [
-          IconButton(
-              icon: Icon(
-                Icons.search_rounded,
-                color: calcite(),
-              ),
-              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen(source: "Vimeo"))))
-        ],
       ),
-      body: FutureBuilder(
-          future: _dataModel,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Container(
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                //height: 500,
-                child: ListView.builder(
-                    controller: _scrollController,
-                    shrinkWrap: true,
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      return LargeCard(video: snapshot.data[index]);
-                    }),
-              );
-            } else
-              return Center(child: CircularProgressIndicator());
-          }),
+      body: Container(
+        child: FutureBuilder(
+            future: _dataModel,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Container(
+                  alignment: Alignment.topLeft,
+                  child: ListView.builder(
+                      controller: _scrollController,
+                      shrinkWrap: true,
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return VideoWithDescriptionCard(video: snapshot.data[index]);
+                      }),
+                );
+              } else
+                return Center(child: CircularProgressIndicator());
+            }),
+      ),
     );
   }
 }
