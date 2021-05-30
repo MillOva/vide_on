@@ -14,21 +14,21 @@ class VimeoVideo {
     //this.total,
     //this.page,
     //this.perPage,
-    //this.paging,
+    this.paging,
     this.data,
   });
 
   //int total;
   //int page;
   //int perPage;
-  //Paging paging;
+  Paging paging;
   List<Datum> data;
 
   factory VimeoVideo.fromJson(Map<String, dynamic> json) => VimeoVideo(
     //total: json["total"],
     //page: json["page"],
     //perPage: json["per_page"],
-    //paging: Paging.fromJson(json["paging"]),
+    paging: Paging.fromJson(json["paging"]),
     data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
   );
 
@@ -36,7 +36,7 @@ class VimeoVideo {
     //"total": total,
     //"page": page,
     //"per_page": perPage,
-    //"paging": paging.toJson(),
+    "paging": paging.toJson(),
     "data": List<dynamic>.from(data.map((x) => x.toJson())),
   };
 }

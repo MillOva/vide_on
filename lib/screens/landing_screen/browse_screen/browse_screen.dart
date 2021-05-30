@@ -4,6 +4,7 @@ import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/screens/cards/source_cards/source_card.dart';
 import 'package:vide_on/screens/landing_screen/browse_screen/tw_screen/tw_screen.dart';
+import 'package:vide_on/screens/landing_screen/browse_screen/vm_screen/vm_screen.dart';
 import 'package:vide_on/screens/landing_screen/browse_screen/yt_screen/yt_screen.dart';
 import 'package:vide_on/screens/landing_screen/library_screen/library_screen.dart';
 import 'package:vide_on/screens/landing_screen/profile_screen/profile_screen.dart';
@@ -42,7 +43,9 @@ class _BrowseScreenState extends State<BrowseScreen> {
               GestureDetector(
                   onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> TwitchScreen())),
                   child: SourceCard(source: 'assets/images/TW_Logo.png', color: Color.fromARGB(255, 121, 41, 235),)),
-              SourceCard(source: 'assets/images/VM_Logo.png', color: Colors.white,),
+              GestureDetector(
+                  onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> VimeoScreen())),
+                  child: SourceCard(source: 'assets/images/VM_Logo.png', color: Colors.white,)),
 
               ],),
         ),
