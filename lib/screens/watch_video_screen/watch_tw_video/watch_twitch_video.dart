@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WatchTwitchVideoScreen extends StatefulWidget {
@@ -29,10 +28,9 @@ class _WatchTwitchVideoScreenState extends State<WatchTwitchVideoScreen> {
     ),
       body: Container(
           child: WebView(
-            initialUrl: Uri.dataFromString('<html><body><iframe src="https://player.twitch.tv/?autoplay=false&parent=streamernews.example.com&video=v40464143"></iframe></body></html>', mimeType: 'text/html').toString(),
+            initialUrl: 'https://www.twitch.tv/${widget.id}',
             javascriptMode: JavascriptMode.unrestricted,
-          )
-      ),
+          )),
     );
   }
   /*{

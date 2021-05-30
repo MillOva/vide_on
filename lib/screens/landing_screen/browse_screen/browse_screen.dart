@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/screens/cards/source_cards/source_card.dart';
+import 'package:vide_on/screens/landing_screen/browse_screen/tw_screen/tw_screen.dart';
 import 'package:vide_on/screens/landing_screen/browse_screen/yt_screen/yt_screen.dart';
 import 'package:vide_on/screens/landing_screen/library_screen/library_screen.dart';
 import 'package:vide_on/screens/landing_screen/profile_screen/profile_screen.dart';
@@ -38,9 +39,11 @@ class _BrowseScreenState extends State<BrowseScreen> {
               GestureDetector(
                   onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> YouTubeScreen())),
                   child: SourceCard(source: 'assets/images/YT_Logo.png', color: Colors.white,)),
-              SourceCard(source: 'assets/images/TW_Logo.png', color: Color.fromARGB(255, 121, 41, 235),),
+              GestureDetector(
+                  onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> TwitchScreen())),
+                  child: SourceCard(source: 'assets/images/TW_Logo.png', color: Color.fromARGB(255, 121, 41, 235),)),
               SourceCard(source: 'assets/images/VM_Logo.png', color: Colors.white,),
-              //SourceCard(), SourceCard(), SourceCard(),
+
               ],),
         ),
         ],
@@ -58,7 +61,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 color: charcoalGrey(),
                 child: Column(
                   children: [
-                    Icon(CupertinoIcons.play_fill, color: graphite(),),
+                    Icon(CupertinoIcons.play_arrow, color: graphite(),),
                     //Image.asset('assets/images/watch passive.png'),
                     SizedBox(height: 7),
                     Text("Watch",style: sfProNonActive(),)
@@ -66,34 +69,46 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 ),
               ),
             ),
-            Column(
-              children: [
-                Icon(CupertinoIcons.compass_fill, color: sapphire(),),
-                //Image.asset('assets/images/browse.png'),
-                SizedBox(height: 7),
-                Text("Browse",style: sfProActive(),)
-              ],
-            ),
-            GestureDetector(
-              onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> LibraryScreen())),
+            Container(
+              width: 44,
+              color: charcoalGrey(),
               child: Column(
                 children: [
-                  //Image.asset('assets/images/library passive.png'),
-                  Icon(CupertinoIcons.bookmark_fill, color: graphite(),),
+                  Icon(CupertinoIcons.compass_fill, color: sapphire(),),
+                  //Image.asset('assets/images/browse.png'),
                   SizedBox(height: 7),
-                  Text("Library",style: sfProNonActive(),)
+                  Text("Browse",style: sfProActive(),)
                 ],
               ),
             ),
             GestureDetector(
+              onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> LibraryScreen())),
+              child: Container(
+                width: 44,
+                color: charcoalGrey(),
+                child: Column(
+                  children: [
+                    //Image.asset('assets/images/library passive.png'),
+                    Icon(CupertinoIcons.bookmark, color: graphite(),),
+                    SizedBox(height: 7),
+                    Text("Library",style: sfProNonActive(),)
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen())),
-              child: Column(
-                children: [
-                  //Image.asset('assets/images/profile passive.png'),
-                  Icon(Icons.person, size: 25, color: graphite(),),
-                  SizedBox(height: 7),
-                  Text("Profile",style: sfProNonActive(),)
-                ],
+              child: Container(
+                width: 44,
+                color: charcoalGrey(),
+                child: Column(
+                  children: [
+                    //Image.asset('assets/images/profile passive.png'),
+                    Icon(CupertinoIcons.profile_circled, size: 25, color: graphite(),),
+                    SizedBox(height: 7),
+                    Text("Profile",style: sfProNonActive(),)
+                  ],
+                ),
               ),
             )
           ],

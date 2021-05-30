@@ -73,11 +73,16 @@ class _YouTubeSearchState extends State<YouTubeSearch> {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(children: [
-                          Icon(Icons.search_rounded, color: graphite(),),
-                          SizedBox(width: 8),
-                          Text(_videos[index],style: bodyFont(),),
-                        ],),
+                        Flexible(
+                          child: Row(children: [
+                            Icon(Icons.search_rounded, color: graphite(),),
+                            SizedBox(width: 8),
+                            Text(_videos[index],style: bodyFont(),
+                              maxLines: 1,
+                              //softWrap: true,
+                              overflow: TextOverflow.ellipsis, ),
+                          ],),
+                        ),
                     IconButton(icon: Icon(CupertinoIcons.arrow_up_left, color: graphite(),), color: calcite(),
                         onPressed: ()=> setState((){_textController.text = _videos[index];})),
                   ]),),
