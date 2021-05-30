@@ -27,6 +27,7 @@ class _WatchNowState extends State<WatchNowScreen> {
       //final _flutterWebviewPlugin = FlutterWebviewPlugin();
     return Scaffold(
       body: ListView(
+        controller: ScrollController(),
         children: [
           SizedBox(height: 40),
           Padding(
@@ -55,7 +56,7 @@ class _WatchNowState extends State<WatchNowScreen> {
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 32*coefW, vertical: 24),
               child: Container(height: 1,color: charcoalGrey(),)),
-          FeedContainer(height: 500),
+          FeedContainer(),
         ],
       ),
       bottomNavigationBar: Container(height: 82* coefH, width:  _width, color: charcoalGrey(),
@@ -63,45 +64,61 @@ class _WatchNowState extends State<WatchNowScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Column(
-              children: [
-                Icon(CupertinoIcons.play_fill, color: sapphire(),),
-                //Image.asset('assets/images/watch.png'),
-                SizedBox(height: 7),
-                Text("Watch",style: sfProActive(),)
-              ],
+            Container(
+              width: 44,
+              color: charcoalGrey(),
+              child: Column(
+                children: [
+                  Icon(CupertinoIcons.play_fill, color: sapphire(),),
+                  //Image.asset('assets/images/watch.png'),
+                  SizedBox(height: 7),
+                  Text("Watch",style: sfProActive(),)
+                ],
+              ),
             ),
             GestureDetector(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> BrowseScreen())),
-              child: Column(
-                children: [
-                  Icon(CupertinoIcons.compass_fill, color: graphite(),),
-                  //Image.asset('assets/images/browse passive.png'),
-                  SizedBox(height: 7),
-                  Text("Browse",style: sfProNonActive(),)
-                ],
+              child: Container(
+                width: 44,
+                color: charcoalGrey(),
+                child: Column(
+                  children: [
+                    Icon(CupertinoIcons.compass, color: graphite(),),
+                    //Image.asset('assets/images/browse passive.png'),
+                    SizedBox(height: 7),
+                    Text("Browse",style: sfProNonActive(),)
+                  ],
+                ),
               ),
             ),
             GestureDetector(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> LibraryScreen())),
-              child: Column(
-                children: [
-                  Icon(CupertinoIcons.bookmark_fill, color: graphite(),),
-                  //Image.asset('assets/images/library passive.png'),
-                  SizedBox(height: 7),
-                  Text("Library",style: sfProNonActive(),)
-                ],
+              child: Container(
+                width: 44,
+                color: charcoalGrey(),
+                child: Column(
+                  children: [
+                    Icon(CupertinoIcons.bookmark, color: graphite(),),
+                    //Image.asset('assets/images/library passive.png'),
+                    SizedBox(height: 7),
+                    Text("Library",style: sfProNonActive(),)
+                  ],
+                ),
               ),
             ),
             GestureDetector(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen())),
-              child: Column(
-                children: [
-                  Icon(Icons.person, size: 25, color: graphite(),),
-                  //Image.asset('assets/images/profile passive.png'),
-                  SizedBox(height: 7),
-                  Text("Profile",style: sfProNonActive(),)
-                ],
+              child: Container(
+                width: 44,
+                color: charcoalGrey(),
+                child: Column(
+                  children: [
+                    Icon(CupertinoIcons.profile_circled, size: 25, color: graphite(),),
+                    //Image.asset('assets/images/profile passive.png'),
+                    SizedBox(height: 7),
+                    Text("Profile",style: sfProNonActive(),)
+                  ],
+                ),
               ),
             )
           ],

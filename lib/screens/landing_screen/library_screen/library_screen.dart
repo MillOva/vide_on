@@ -60,43 +60,59 @@ class _LibraryScreenState extends State<LibraryScreen> {
           children: [
             GestureDetector(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> WatchNowScreen())),
-              child: Column(
-                children: [
-                  Icon(CupertinoIcons.play_fill, color: graphite(),),
-                  //Image.asset('assets/images/watch passive.png'),
-                  SizedBox(height: 7),
-                  Text("Watch",style: sfProNonActive(),)
-                ],
+              child: Container(
+                width: 44,
+                color: charcoalGrey(),
+                child: Column(
+                  children: [
+                    Icon(CupertinoIcons.play, color: graphite(),),
+                    //Image.asset('assets/images/watch passive.png'),
+                    SizedBox(height: 7),
+                    Text("Watch",style: sfProNonActive(),)
+                  ],
+                ),
               ),
             ),
             GestureDetector(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> BrowseScreen())),
+              child: Container(
+                width: 44,
+                color: charcoalGrey(),
+                child: Column(
+                  children: [
+                    Icon(CupertinoIcons.compass, color: graphite(),),
+                    //Image.asset('assets/images/browse passive.png'),
+                    SizedBox(height: 7),
+                    Text("Browse",style: sfProNonActive(),)
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              width: 44,
+              color: charcoalGrey(),
               child: Column(
                 children: [
-                  Icon(CupertinoIcons.compass_fill, color: graphite(),),
-                  //Image.asset('assets/images/browse passive.png'),
+                  //Image.asset('assets/images/library.png'),
+                  Icon(CupertinoIcons.bookmark_fill, color: sapphire(),),
                   SizedBox(height: 7),
-                  Text("Browse",style: sfProNonActive(),)
+                  Text("Library",style: sfProActive(),)
                 ],
               ),
             ),
-            Column(
-              children: [
-                //Image.asset('assets/images/library.png'),
-                Icon(CupertinoIcons.bookmark_fill, color: sapphire(),),
-                SizedBox(height: 7),
-                Text("Library",style: sfProActive(),)
-              ],
-            ),
             GestureDetector(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen())),
-              child: Column(
-                children: [
-                  Icon(Icons.person, size: 25, color: graphite(),),
-                  //Image.asset('assets/images/profile passive.png'),
-                  SizedBox(height: 7),
-                  Text("Profile",style: sfProNonActive(),)
-                ],
+              child: Container(
+                width: 44,
+                color: charcoalGrey(),
+                child: Column(
+                  children: [
+                    Icon(CupertinoIcons.profile_circled, size: 25, color: graphite(),),
+                    //Image.asset('assets/images/profile passive.png'),
+                    SizedBox(height: 7),
+                    Text("Profile",style: sfProNonActive(),)
+                  ],
+                ),
               ),
             )
           ],

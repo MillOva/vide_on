@@ -104,7 +104,7 @@ class _YouTubeScreenState extends State<YouTubeScreen> {
                       borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 142, 29, 45)),
                   child: Row(
                     children: [
-                      Icon(Icons.wb_incandescent,color: calcite(),),
+                      Icon(Icons.wb_incandescent_outlined,color: calcite(),),
                       SizedBox(width: 8),
                       Text("Education",style: buttonFont(),)
                     ],
@@ -138,7 +138,7 @@ class _YouTubeScreenState extends State<YouTubeScreen> {
                       borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 183, 114, 101)),
                     child: Row(
                       children: [
-                        Icon(Icons.sports_football,color: calcite(),),
+                        Icon(Icons.sports_football_outlined,color: calcite(),),
                         SizedBox(width: 8),
                         Text("Sport",style: buttonFont(),)
                       ],

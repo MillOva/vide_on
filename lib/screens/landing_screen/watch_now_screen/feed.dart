@@ -9,8 +9,7 @@ import 'package:vide_on/services/video_actions/parse_vm_video.dart';
 import 'package:vide_on/services/video_actions/parse_yt_video.dart';
 
 class FeedContainer extends StatefulWidget {
-  final double height;
-  FeedContainer({@required this.height});
+
   @override
   _FeedContainerState createState() => _FeedContainerState();
 }
@@ -80,8 +79,8 @@ class _FeedContainerState extends State<FeedContainer> {
           if (snapshot.hasData) {
             return Container(
               padding: EdgeInsets.symmetric(horizontal: 32),
-              height: widget.height,
               child: ListView.builder(
+                  controller: ScrollController(),
                   shrinkWrap: true,
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
