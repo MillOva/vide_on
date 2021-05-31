@@ -28,4 +28,7 @@ class ConcreteUser{
     }
   }
 
+  Future<void> clearUser() async{
+    return FirebaseAuth.instance.signOut();
+}
 }

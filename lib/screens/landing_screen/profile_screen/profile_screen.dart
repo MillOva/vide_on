@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
+import 'package:vide_on/screens/login_screen/login_screen.dart';
 import 'package:vide_on/screens/privacy_policy_screen/privacy_policy_screen.dart';
+import 'package:vide_on/services/user/user.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -12,6 +15,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final ConcreteUser _user = Provider.of<ConcreteUser>(context);
     double _height = MediaQuery.of(context).size.height;
     double coefH = _height / 896;
     return Scaffold(
@@ -110,11 +114,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Image.asset('assets/images/next.png')
                     ],),),
                 SizedBox(height: 48*coefH),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(horizontal: 8),height: 44*coefH, width: double.maxFinite,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: charcoalGrey()),
-                  child: Text("Log Out",style: bodyFont3(),),),
+                GestureDetector(
+                  onTap: (){
+                    _user.clearUser();
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                  },
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.symmetric(horizontal: 8),height: 44*coefH, width: double.maxFinite,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: charcoalGrey()),
+                    child: Text("Log Out",style: bodyFont3(),),),
+                ),
               ],
             ),
           ],

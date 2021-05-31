@@ -28,7 +28,6 @@ class LoginWithEmail{
     }
   }
   Stream<ConcreteUser> notifyAboutUser(){
-
       return FirebaseAuth.instance.authStateChanges()
           .map((User user) => user !=null ? ConcreteUser.fromFirebase(user) :null);
 }
