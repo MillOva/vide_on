@@ -23,8 +23,6 @@ class _WatchNowState extends State<WatchNowScreen> {
     double coefH = _height / 896;
     double coefW = _width / 414;
 
-
-      //final _flutterWebviewPlugin = FlutterWebviewPlugin();
     return Scaffold(
       body: ListView(
         controller: ScrollController(),

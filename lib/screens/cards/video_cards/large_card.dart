@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vide_on/global/app_style/colors.dart';
@@ -17,9 +18,18 @@ class LargeCard extends StatefulWidget {
 }
 
 class _LargeCardState extends State<LargeCard> {
+  bool _isFavourite = false;
+
   @override
   Widget build(BuildContext context) {
     final ConcreteUser _user = Provider.of<ConcreteUser>(context);
+    if(_user != null){
+      for(var u in _user.favourites){
+        if(u == widget.video.id){
+            _isFavourite = true;
+        }
+      }
+    }
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
     double coefH = _height / 896;
@@ -43,13 +53,34 @@ class _LargeCardState extends State<LargeCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 197 * coefH,
-              width:  350 * coefW,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(image: NetworkImage(widget.video.thumbnailUrl),
-                      fit: BoxFit.cover),
-                  color: charcoalGrey()),
+            Stack(
+              children: [
+              Container(
+                height: 197 * coefH,
+                width:  350 * coefW,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(1),
+                    image: DecorationImage(image: NetworkImage(widget.video.thumbnailUrl),
+                        fit: BoxFit.cover),
+                    color: charcoalGrey()),
+              ),
+              Positioned(
+                right: 8, top: 8,
+                child: GestureDetector(
+                  onTap: ()=> setState((){
+                    _isFavourite = !_isFavourite;
+                    changeFavourites(_isFavourite, widget.video, _user);
+                  }),
+                  child: Container(
+                    height: 35, width: 35,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                      color: obsidian(),
+                    //border: Border.all(color: sapphire())
+                    ),
+                    child: Center(child: Icon(_isFavourite ? CupertinoIcons.heart_fill :CupertinoIcons.heart, color: sapphire(),)),
+                  ),
+                ),
+              )
+        ]
             ),
             SizedBox(height: 8),
             Text(widget.video.title, maxLines: 1,style: bodyFont(), overflow: TextOverflow.ellipsis,),

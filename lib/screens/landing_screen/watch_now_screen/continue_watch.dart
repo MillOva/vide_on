@@ -38,7 +38,7 @@ class _ContinueWatchContainerState extends State<ContinueWatchContainer> {
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              itemCount: snapshot.data.docs.length,//ytResult.length,
+              itemCount: snapshot.data.docs.length < 8 ? snapshot.data.docs.length : 8,
               itemBuilder:  (context, index) {
                 return
                 SmallCard(video: Video.fromMap(snapshot.data.docs[index]),);

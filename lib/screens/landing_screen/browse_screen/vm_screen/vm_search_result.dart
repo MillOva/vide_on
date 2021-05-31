@@ -33,7 +33,6 @@ class _VimeoSearchResultState extends State<VimeoSearchResult> {
     VimeoVideo video = VimeoVideo.fromJson(jsonData);
     _nextPageToken = video.paging.next;
     for(var u in jsonData['data']) {
-      print(u);
       Datum datum = Datum.fromJson(u);
       _videos.add(Video.fromVM(datum));
     }

@@ -12,6 +12,9 @@ Color systemBlueLight(){
 Color graphite(){
   return Color(0xff6d7278);
 }
+Color likeColor(){
+  return Color(0x96000000);
+}
 Color obsidian(){
   return Color(0xff000000);
 }
