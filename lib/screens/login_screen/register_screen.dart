@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/colors.dart';
+import 'package:vide_on/global/app_style/colors.dart';
+import 'package:vide_on/global/app_style/fonts.dart';
 import 'package:vide_on/global/custom_widgets/input_field.dart';
-import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/global/app_style/fonts.dart';
 import 'package:vide_on/screens/login_screen/login_screen.dart';
 import 'package:vide_on/screens/privacy_policy_screen/privacy_policy_screen.dart';
-import 'file:///C:/flutter_projects/flutterlearning/vide_on/lib/services/regiseter_services/register_email.dart';
+import 'package:vide_on/services/regiseter_services/register_email.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override

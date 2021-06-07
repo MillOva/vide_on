@@ -56,11 +56,16 @@ class RegisterWithEmail{
           'email' : email,
           'password' : password,
           'profilePicture' : "null",
+          'update' : false,
+          'subscriptions' : false,
+          'recommendations' : false,
         })
         .then((value) {
+
       print("user added");
       return Navigator.push(context, MaterialPageRoute(builder: (context)=> WatchNowScreen()));
     })
         .catchError((error) => print("Failed to add user: $error"));
   }
+
 }

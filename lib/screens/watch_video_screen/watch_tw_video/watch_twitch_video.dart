@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WatchTwitchVideoScreen extends StatefulWidget {
@@ -13,8 +15,30 @@ class WatchTwitchVideoScreen extends StatefulWidget {
 
 class _WatchTwitchVideoScreenState extends State<WatchTwitchVideoScreen> {
   @override
- Widget build(BuildContext context){
-    return Scaffold(appBar: AppBar(
+  void initState() {
+    super.initState();
+    // Enable hybrid composition.
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+  }
+
+  @override
+ Widget build(BuildContext context) {
+    return WebviewScaffold(
+        appBar: AppBar(
+          leading: GestureDetector(
+              onTap: () {
+                SystemChrome.setPreferredOrientations([
+                  DeviceOrientation.portraitUp,
+                  DeviceOrientation.portraitDown,
+                ]);
+                Navigator.pop(context);
+              },
+              child: Container(child: Image.asset('assets/images/back.png'),)),
+          backgroundColor: Colors.transparent,
+        ),
+        url: 'https://www.twitch.tv/${widget.id}');
+  }
+  /*    Scaffold(appBar: AppBar(
       leading: GestureDetector(
           onTap: () {
             SystemChrome.setPreferredOrientations([
@@ -27,12 +51,19 @@ class _WatchTwitchVideoScreenState extends State<WatchTwitchVideoScreen> {
       backgroundColor: Colors.transparent,
     ),
       body: Container(
-          child: WebView(
+        child: WebView(
+        initialUrl: 'https://www.twitch.tv/${widget.id}',
+          javascriptMode: JavascriptMode.unrestricted,
+        )
+         /* child: WebView(
             initialUrl: 'https://www.twitch.tv/${widget.id}',
             javascriptMode: JavascriptMode.unrestricted,
-          )),
+          )*/
+        //child:
+       // Text("https://www.twitch.tv/${widget.id}", style: bodyFont(),),
+      ),
     );
-  }
+  }*/
   /*{
     return WebviewScaffold(
         appBar: AppBar(

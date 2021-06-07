@@ -69,6 +69,13 @@ class _SearchScreenState extends State<SearchScreen> {
                           child: Row(children: [
                             Icon(Icons.search_rounded, color: graphite(),),
                             SizedBox(width: 8),
+                            _videos.length > 5
+                                ?
+                            Text(_videos[_videos.length - index - 1],style: bodyFont(),
+                              maxLines: 1,
+                              //softWrap: true,
+                              overflow: TextOverflow.ellipsis, )
+                                :
                             Text(_videos[index],style: bodyFont(),
                               maxLines: 1,
                               //softWrap: true,
@@ -83,7 +90,7 @@ class _SearchScreenState extends State<SearchScreen> {
             separatorBuilder: (BuildContext context, int index) => Divider(
               color: graphite(),
             ),
-            itemCount: _videos.length),
+            itemCount: _videos.length > 5 ? 5 : _videos.length),
       ),
     );
   }

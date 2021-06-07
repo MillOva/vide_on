@@ -21,8 +21,11 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  #image taking and crop
+  image_picker: ^0.6.7
+  image_crop: ^0.4.0
   #twitch package
-  webview_flutter: ^2.0.7
+  webview_flutter: 2.0.7
   flutter_webview_plugin: ^0.3.11
   twitch_api: ^0.2.0
   #youtube package
@@ -61,7 +64,7 @@ flutter:
   assets:
     - assets/images/
     - assets/text/privacy_policy.md
-    - assets/text/PrivacyPolicy.rtf
+    - assets/text/
   fonts:
     - family: Noteworthy-Lt
       fonts:
