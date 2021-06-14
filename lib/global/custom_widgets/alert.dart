@@ -2,21 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:vide_on/global/app_style/colors.dart';
 import 'package:vide_on/global/app_style/fonts.dart';
 
-class CustomAlert extends StatefulWidget {
-final String text;
-  CustomAlert({Key key, @required this.text}) : super(key: key);
-
-  @override
-  _CustomAlertState createState() => _CustomAlertState();
-}
-
-class _CustomAlertState extends State<CustomAlert> {
-  @override
-  Widget build(BuildContext context) {
-  showError(widget.text, context);
-  }
-}
-
 Future <void> showError(String errorText, context) async{
   double _height = MediaQuery.of(context).size.height;
   double _width = MediaQuery.of(context).size.width;

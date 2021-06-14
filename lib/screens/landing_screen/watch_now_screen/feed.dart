@@ -20,7 +20,7 @@ class _FeedContainerState extends State<FeedContainer> {
 
   Future<List<Video>> getYTVideos() async {
     var data = await http.get(
-        "https://youtube.googleapis.com/youtube/v3/videos?chart=mostPopular&key=$ApiKey&part=snippet");
+        "https://youtube.googleapis.com/youtube/v3/videos?chart=mostPopular&regionCode=at&key=$ApiKey&part=snippet");
     var jsonData = json.decode(data.body);
     print(jsonData);
     for (var u in jsonData['items']) {

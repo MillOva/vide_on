@@ -23,7 +23,7 @@ class _YouTubeScreenState extends State<YouTubeScreen> {
 
   Future<List<Video>> getYTVideos(String token) async {
     var data = await http.get(
-        "https://youtube.googleapis.com/youtube/v3/videos?chart=mostPopular&key=$ApiKey&part=snippet&pageToken=$token");
+        "https://youtube.googleapis.com/youtube/v3/videos?chart=mostPopular&regionCode=at&key=$ApiKey&part=snippet&pageToken=$token");
     var jsonData = json.decode(data.body);
     _nextPageToken = jsonData['nextPageToken'];
     for (var u in jsonData['items']) {

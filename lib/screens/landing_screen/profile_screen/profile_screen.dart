@@ -20,10 +20,6 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
-  void initState() {
-    super.initState();
-  }
-  @override
   Widget build(BuildContext context) {
     final ConcreteUser _user = Provider.of<ConcreteUser>(context);
     double _height = MediaQuery.of(context).size.height;
